@@ -17,13 +17,23 @@ const shopify = shopifyApp({
   sessionStorage: new PrismaSessionStorage(prisma),
   distribution: AppDistribution.AppStore,
   future: {
-    unstable_newEmbeddedAuthStrategy: true,
+    unstable_newEmbeddedAuthStrategy: false,
     removeRest: true,
   },
   ...(process.env.SHOP_CUSTOM_DOMAIN
     ? { customShopDomains: [process.env.SHOP_CUSTOM_DOMAIN] }
     : {}),
 });
+
+// Custom function to add document response headers that allow iframe embedding
+const customAddDocumentResponseHeaders = (request, responseHeaders) => {
+  // Call the original function first
+  shopify.addDocumentResponseHeaders(request, responseHeaders);
+  
+  // Override iframe restrictions
+  responseHeaders.delete("X-Frame-Options");
+  responseHeaders.set("Content-Security-Policy", "frame-ancestors 'self' https://*.shopify.com https://admin.shopify.com");
+};
 
 export default shopify;
 export const apiVersion = ApiVersion.January25;
