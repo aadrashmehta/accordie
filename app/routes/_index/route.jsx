@@ -19,9 +19,9 @@ export default function App() {
   return (
     <div className={styles.index}>
       <div className={styles.content}>
-        <h1 className={styles.heading}>A short heading about [your app]</h1>
+        <h1 className={styles.heading}>Accordie</h1>
         <p className={styles.text}>
-          A tagline about [your app] that describes your value proposition.
+          My first shopify app 🎉
         </p>
         {showForm && (
           <Form className={styles.form} method="post" action="/auth/login">
@@ -37,16 +37,16 @@ export default function App() {
         )}
         <ul className={styles.list}>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Accordions</strong>. Add collapsible sections to your store
+            to organize content and improve user experience.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Customer Support</strong>. Add a support section to your
+            store to help customers with their queries and issues.
           </li>
           <li>
-            <strong>Product feature</strong>. Some detail about your feature and
-            its benefit to your customer.
+            <strong>Scroll to top</strong>. Add a button to your store 
+            that allows users to quickly scroll back to the top of the page.
           </li>
         </ul>
       </div>

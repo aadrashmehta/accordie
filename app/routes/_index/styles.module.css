@@ -6,6 +6,9 @@
   width: 100%;
   text-align: center;
   padding: 1rem;
+  min-height: 100dvh;
+  background: #dcdac8;
+  font-family: cursive;
 }
 
 .heading,
