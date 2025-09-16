@@ -25,7 +25,7 @@ api_version = "2025-07"
 scopes = "write_products"
 
 [auth]
-redirect_urls = ["https://accordie-aadrash-mehtas-projects.vercel.app/auth/callback","https://accordie-aadrash-mehtas-projects.vercel.app/api/auth/callback"]
+redirect_urls = ["https://accordie-aadrash-mehtas-projects.vercel.app/auth/callback"]
 
 [pos]
 embedded = false
