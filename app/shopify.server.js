@@ -26,14 +26,14 @@ const shopify = shopifyApp({
 });
 
 // // Custom function to add document response headers that allow iframe embedding
-const customAddDocumentResponseHeaders = (request, responseHeaders) => {
-  // Call the original function first
-  shopify.addDocumentResponseHeaders(request, responseHeaders);
+// const customAddDocumentResponseHeaders = (request, responseHeaders) => {
+//   // Call the original function first
+//   shopify.addDocumentResponseHeaders(request, responseHeaders);
   
-  // Override iframe restrictions
-  responseHeaders.delete("X-Frame-Options");
-  responseHeaders.set("Content-Security-Policy", "frame-ancestors 'self' https://*.shopify.com https://admin.shopify.com");
-};
+//   // Override iframe restrictions
+//   responseHeaders.delete("X-Frame-Options");
+//   responseHeaders.set("Content-Security-Policy", "frame-ancestors 'self' https://*.shopify.com https://admin.shopify.com");
+// };
 
 export default shopify;
 export const apiVersion = ApiVersion.January25;

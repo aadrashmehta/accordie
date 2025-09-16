@@ -8,13 +8,7 @@ import { authenticate } from "../shopify.server";
 export const links = () => [{ rel: "stylesheet", href: polarisStyles }];
 
 export const loader = async ({ request }) => {
-  // await authenticate.admin(request);
-
-  const { session } = await authenticate.admin(request);
-  if (!session) {
-    // Redirect to start auth again
-    throw redirect(`/auth?shop=${new URL(request.url).searchParams.get("shop")}`);
-  }
+  await authenticate.admin(request);
 
   return { apiKey: process.env.SHOPIFY_API_KEY || "" };
 };
@@ -41,13 +35,5 @@ export function ErrorBoundary() {
 }
 
 export const headers = (headersArgs) => {
-  // return boundary.headers(headersArgs);
-  const baseHeaders = boundary.headers(headersArgs);
-
-  return {
-    ...baseHeaders,
-    "Content-Security-Policy":
-      "frame-ancestors https://admin.shopify.com https://*.myshopify.com",
-    "X-Frame-Options": "" // remove the DENY
-  };
+  return boundary.headers(headersArgs);
 };
