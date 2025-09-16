@@ -41,5 +41,13 @@ export function ErrorBoundary() {
 }
 
 export const headers = (headersArgs) => {
-  return boundary.headers(headersArgs);
+  // return boundary.headers(headersArgs);
+  const baseHeaders = boundary.headers(headersArgs);
+
+  return {
+    ...baseHeaders,
+    "Content-Security-Policy":
+      "frame-ancestors https://admin.shopify.com https://*.myshopify.com",
+    "X-Frame-Options": "" // remove the DENY
+  };
 };
